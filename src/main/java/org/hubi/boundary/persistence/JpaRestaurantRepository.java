@@ -1,7 +1,6 @@
 package org.hubi.boundary.persistence;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -9,7 +8,6 @@ import org.hubi.entity.Restaurant;
 import org.hubi.entity.RestaurantRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @ApplicationScoped
 public class JpaRestaurantRepository implements RestaurantRepository {
@@ -19,7 +17,7 @@ public class JpaRestaurantRepository implements RestaurantRepository {
 
     @Override
     public List<Restaurant> findAll() {
-        return entityManager.createQuery("FROM Restaurant", Restaurant.class).getResultList() ;
+        return entityManager.createQuery("FROM Restaurant", Restaurant.class).getResultList();
     }
 
     @Override
@@ -30,8 +28,16 @@ public class JpaRestaurantRepository implements RestaurantRepository {
     @Override
     @Transactional
     public Restaurant save(Restaurant restaurant) {
-       entityManager.persist(restaurant);
-       return restaurant;
+        entityManager.persist(restaurant);
+        return restaurant;
+    }
+
+    @Override
+    @Transactional
+    public Restaurant update(Restaurant updatedRestaurant) {
+        Restaurant restaurant = entityManager.find(Restaurant.class, updatedRestaurant.getId());
+        restaurant.update(updatedRestaurant);
+        return restaurant;
     }
 
     @Override

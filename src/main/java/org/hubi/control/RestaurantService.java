@@ -6,7 +6,6 @@ import org.hubi.entity.Restaurant;
 import org.hubi.entity.RestaurantRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @ApplicationScoped
 public class RestaurantService {
@@ -24,6 +23,10 @@ public class RestaurantService {
 
     public Restaurant addRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
+    }
+
+    public Restaurant updateRestaurant(Restaurant restaurant) {
+        return restaurantRepository.update(restaurant);
     }
 
     public void deleteById(Long id) {

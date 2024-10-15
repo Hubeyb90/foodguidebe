@@ -22,7 +22,12 @@ public interface RestaurantApi {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    Response addRestaurant( Restaurant restaurant);
+    Response addRestaurant(Restaurant restaurant);
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    Response updateRestaurant(Restaurant restaurant);
 
     @DELETE
     void deleteById(@QueryParam("id") Long id);
