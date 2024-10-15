@@ -1,15 +1,10 @@
 package org.hubi.boundary.rest;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.hubi.control.RestaurantService;
 import org.hubi.entity.Restaurant;
-
-import java.util.Optional;
 
 public class RestaurantResource implements RestaurantApi {
 
@@ -37,10 +32,15 @@ public class RestaurantResource implements RestaurantApi {
     }
 
     @Override
+    public Response updateRestaurant(Restaurant restaurant) {
+        return Response.ok(restaurantService.updateRestaurant(restaurant)).build();
+    }
+
+    @Override
     public void deleteById(Long id) {
         Restaurant restaurant = restaurantService.getRestaurantById(id);
         if (restaurant == null) {
-            throw new NotFoundException(String.format("Restaurant with id ${id} was not found.", id));
+            throw new NotFoundException(String.format("Restaurant with id %s was not found.", id));
         } else {
             restaurantService.deleteById(id);
         }

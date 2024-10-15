@@ -1,7 +1,6 @@
 package org.hubi.entity;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface RestaurantRepository {
 
@@ -10,6 +9,8 @@ public interface RestaurantRepository {
     Restaurant findById(Long id);
 
     Restaurant save(Restaurant restaurant);
+
+    Restaurant update(Restaurant restaurant);
 
     void delete(Long id);
 

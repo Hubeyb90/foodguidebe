@@ -16,9 +16,10 @@ public class Restaurant {
     @Column(nullable = false)
     private String name;
 
-    public Restaurant(){}
+    public Restaurant() {
+    }
 
-    public Restaurant(String name){
+    public Restaurant(String name) {
         this.name = name;
     }
 
@@ -28,5 +29,9 @@ public class Restaurant {
 
     public String getName() {
         return name;
+    }
+
+    public void update(Restaurant restaurant) {
+        this.name = restaurant.getName();
     }
 }
