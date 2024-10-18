@@ -5,11 +5,9 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import org.hubi.entity.Restaurant;
 
 @Path("/restaurant")
-@RegisterRestClient
 public interface RestaurantApi {
 
     @GET
